@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="170dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        app:cardCornerRadius="15dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/Theme.MaterialComponents.Light">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:layout_gravity="right|bottom"
+                android:background="@color/transparent"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/play"
+                app:iconGravity="textEnd"
+                app:iconSize="90dp"
+                tools:ignore="RtlHardcoded,SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:id="@+id/carouselImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/carousel_image" />
+
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
