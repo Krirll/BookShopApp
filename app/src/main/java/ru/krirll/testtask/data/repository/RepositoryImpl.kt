@@ -6,11 +6,12 @@ import ru.krirll.testtask.data.network.ApiService
 import ru.krirll.testtask.domain.entities.BookItem
 import ru.krirll.testtask.domain.entities.ImageItem
 import ru.krirll.testtask.domain.repository.Repository
+import javax.inject.Inject
 
-class RepositoryImpl(
-    private val service: ApiService = ApiService.getApiServiceInstance(),
-    private val imageMapper: ImageMapper = ImageMapper(),
-    private val bookMapper: BookMapper = BookMapper()
+class RepositoryImpl @Inject constructor(
+    private val service: ApiService /*= ApiService.getApiServiceInstance()*/,
+    private val imageMapper: ImageMapper /*= ImageMapper()*/,
+    private val bookMapper: BookMapper/* = BookMapper()*/
 ): Repository {
 
     override suspend fun getBestSellerBooks(): List<BookItem> =

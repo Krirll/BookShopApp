@@ -1,5 +1,6 @@
 package ru.krirll.testtask.presentation.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,17 +15,23 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import ru.krirll.testtask.MainApplication
 import ru.krirll.testtask.R
 import ru.krirll.testtask.databinding.FragmentBookDetailsBinding
 import ru.krirll.testtask.presentation.listAdapters.ImagesAdapter
 import ru.krirll.testtask.presentation.viewModels.BookDetailsViewModel
+import ru.krirll.testtask.presentation.viewModels.ViewModelFactory
+import javax.inject.Inject
 
 class BookDetailsFragment : Fragment() {
 
     private val args by navArgs<BookDetailsFragmentArgs>()
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
     private val bookDetailsViewModel by lazy {
-        ViewModelProvider(this)[BookDetailsViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[BookDetailsViewModel::class.java]
     }
 
     private var _viewBinding: FragmentBookDetailsBinding? = null
@@ -32,6 +39,11 @@ class BookDetailsFragment : Fragment() {
         get() = _viewBinding ?: throw RuntimeException("FragmentBookDetailsBinding == null")
 
     private var similarAdapter: ImagesAdapter? = null
+
+    override fun onAttach(context: Context) {
+        (requireActivity().application as MainApplication).component.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

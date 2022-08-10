@@ -8,20 +8,15 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import ru.krirll.testtask.data.repository.RepositoryImpl
 import ru.krirll.testtask.domain.entities.BookItem
 import ru.krirll.testtask.domain.entities.ImageItem
 import ru.krirll.testtask.domain.useCases.GetBestSellerBooksUseCase
 import ru.krirll.testtask.domain.useCases.GetCarouselImagesUseCase
+import javax.inject.Inject
 
-class CarouselBestSellerViewModel(
-    private val repository: RepositoryImpl = RepositoryImpl(),
-    private val getBestSellerBooksUseCase: GetBestSellerBooksUseCase = GetBestSellerBooksUseCase(
-        repository
-    ),
-    private val getCarouselImagesUseCase: GetCarouselImagesUseCase = GetCarouselImagesUseCase(
-        repository
-    ),
+class CarouselBestSellerViewModel @Inject constructor(
+    private val getBestSellerBooksUseCase: GetBestSellerBooksUseCase/* = GetBestSellerBooksUseCase(repository)*/,
+    private val getCarouselImagesUseCase: GetCarouselImagesUseCase/* = GetCarouselImagesUseCase(repository)*/
 ) : ViewModel() {
 
     private var _carousel = MutableLiveData<List<ImageItem>>()
