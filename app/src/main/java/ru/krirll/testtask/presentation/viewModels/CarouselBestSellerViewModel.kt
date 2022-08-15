@@ -11,8 +11,6 @@ import ru.krirll.testtask.presentation.viewModels.uiState.BooksUiState
 import ru.krirll.testtask.presentation.viewModels.uiState.CarouselUiState
 import javax.inject.Inject
 
-//todo удалить ненужные комменты!!!
-
 class CarouselBestSellerViewModel @Inject constructor(
     private val getBestSellerBooksUseCase: GetBestSellerBooksUseCase,
     private val getCarouselImagesUseCase: GetCarouselImagesUseCase
