@@ -1,35 +1,27 @@
 package ru.krirll.testtask.presentation.viewModels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import ru.krirll.testtask.domain.entities.ImageItem
 import ru.krirll.testtask.domain.useCases.GetSimilarBooksUseCase
+import ru.krirll.testtask.presentation.viewModels.uiState.BookDetailsUiState
 import javax.inject.Inject
 
 class BookDetailsViewModel @Inject constructor(
     private val getSimilarBooksUseCase: GetSimilarBooksUseCase /*= GetSimilarBooksUseCase(repository)*/
 ): ViewModel() {
 
-    private var _similarBooks = MutableLiveData<List<ImageItem>>()
-    val similarBooks: LiveData<List<ImageItem>>
-        get() = _similarBooks
-
-    private var _networkErrors = Channel<Unit>(Channel.CONFLATED)
-    val networkErrors: Flow<Unit>
-        get() = _networkErrors.receiveAsFlow()
+    private var _similarBooks = MutableStateFlow<BookDetailsUiState>(BookDetailsUiState.Empty)
+    val similarBooks: StateFlow<BookDetailsUiState> = _similarBooks
 
     fun getSimilarBooks() {
         viewModelScope.launch {
             try {
-                _similarBooks.value = getSimilarBooksUseCase()
+                _similarBooks.value = BookDetailsUiState.Success(getSimilarBooksUseCase())
             } catch (ex: Exception) {
-                _networkErrors.send((Unit))
+                _similarBooks.value = BookDetailsUiState.Error(ex.message ?: "")
             }
         }
     }
