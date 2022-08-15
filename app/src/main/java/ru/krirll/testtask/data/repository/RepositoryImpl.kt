@@ -9,9 +9,9 @@ import ru.krirll.testtask.domain.repository.Repository
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(
-    private val service: ApiService /*= ApiService.getApiServiceInstance()*/,
-    private val imageMapper: ImageMapper /*= ImageMapper()*/,
-    private val bookMapper: BookMapper/* = BookMapper()*/
+    private val service: ApiService,
+    private val imageMapper: ImageMapper,
+    private val bookMapper: BookMapper
 ): Repository {
 
     override suspend fun getBestSellerBooks(): List<BookItem> =

@@ -22,7 +22,6 @@ interface ApiService {
         private var service: ApiService? = null
         private val INSTANCE = Any()
 
-        //TODO что нужно делать здесь?
         fun getApiServiceInstance(): ApiService =
             synchronized(INSTANCE) {
                 if (service == null)
