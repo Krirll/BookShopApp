@@ -9,9 +9,8 @@ import ru.krirll.testtask.domain.useCases.GetBestSellerBooksUseCase
 import ru.krirll.testtask.domain.useCases.GetCarouselImagesUseCase
 import ru.krirll.testtask.presentation.viewModels.uiState.BooksUiState
 import ru.krirll.testtask.presentation.viewModels.uiState.CarouselUiState
-import javax.inject.Inject
 
-class CarouselBestSellerViewModel @Inject constructor(
+class CarouselBestSellerViewModel (
     private val getBestSellerBooksUseCase: GetBestSellerBooksUseCase,
     private val getCarouselImagesUseCase: GetCarouselImagesUseCase
 ) : ViewModel() {

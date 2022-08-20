@@ -1,9 +1,8 @@
 package ru.krirll.testtask.domain.useCases
 
 import ru.krirll.testtask.domain.repository.Repository
-import javax.inject.Inject
 
-class GetBestSellerBooksUseCase @Inject constructor(
+class GetBestSellerBooksUseCase (
     private val repository: Repository
 ) {
 

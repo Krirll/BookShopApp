@@ -1,36 +1,27 @@
 package ru.krirll.testtask.presentation.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
-import ru.krirll.testtask.MainApplication
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.krirll.testtask.databinding.FragmentCarouselBestSellersBinding
 import ru.krirll.testtask.presentation.listAdapters.BestSellerAdapter
 import ru.krirll.testtask.presentation.listAdapters.ImagesAdapter
-import ru.krirll.testtask.presentation.viewModels.uiState.BooksUiState
 import ru.krirll.testtask.presentation.viewModels.CarouselBestSellerViewModel
+import ru.krirll.testtask.presentation.viewModels.uiState.BooksUiState
 import ru.krirll.testtask.presentation.viewModels.uiState.CarouselUiState
-import ru.krirll.testtask.presentation.viewModels.ViewModelFactory
-import javax.inject.Inject
 
 class CarouselBestSellersFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
-    private val carouselBestSellerViewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[CarouselBestSellerViewModel::class.java]
-    }
+    private val carouselBestSellerViewModel by viewModel<CarouselBestSellerViewModel>()
 
     private var _viewBinding: FragmentCarouselBestSellersBinding? = null
     private val viewBinding: FragmentCarouselBestSellersBinding
@@ -38,11 +29,6 @@ class CarouselBestSellersFragment : Fragment() {
 
     private var carouselAdapter: ImagesAdapter? = null
     private var bestSellerAdapter: BestSellerAdapter? = null
-
-    override fun onAttach(context: Context) {
-        (requireActivity().application as MainApplication).component.inject(this)
-        super.onAttach(context)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,15 +40,10 @@ class CarouselBestSellersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        inject()
         initCarousel()
         initBestSellerBooks()
         observeViewModel()
         getContent()
-    }
-
-    private fun inject() {
-        (requireActivity().application as MainApplication).component.inject(this)
     }
 
     private fun getContent() {

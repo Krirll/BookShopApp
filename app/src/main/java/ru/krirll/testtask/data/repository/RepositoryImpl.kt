@@ -6,9 +6,8 @@ import ru.krirll.testtask.data.network.ApiService
 import ru.krirll.testtask.domain.entities.BookItem
 import ru.krirll.testtask.domain.entities.ImageItem
 import ru.krirll.testtask.domain.repository.Repository
-import javax.inject.Inject
 
-class RepositoryImpl @Inject constructor(
+class RepositoryImpl (
     private val service: ApiService,
     private val imageMapper: ImageMapper,
     private val bookMapper: BookMapper
