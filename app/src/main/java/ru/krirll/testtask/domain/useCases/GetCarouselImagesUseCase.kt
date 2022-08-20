@@ -1,9 +1,8 @@
 package ru.krirll.testtask.domain.useCases
 
 import ru.krirll.testtask.domain.repository.Repository
-import javax.inject.Inject
 
-class GetCarouselImagesUseCase @Inject constructor(
+class GetCarouselImagesUseCase (
     private val repository: Repository
 ) {
 

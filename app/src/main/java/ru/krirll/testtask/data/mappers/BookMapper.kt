@@ -2,9 +2,8 @@ package ru.krirll.testtask.data.mappers
 
 import ru.krirll.testtask.data.network.models.BookItemDto
 import ru.krirll.testtask.domain.entities.BookItem
-import javax.inject.Inject
 
-class BookMapper @Inject constructor() {
+class BookMapper {
 
     fun mapFromDtoToEntity(dto: BookItemDto) = BookItem(
         title = dto.title,
