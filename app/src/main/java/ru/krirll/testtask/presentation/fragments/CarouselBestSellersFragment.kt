@@ -14,11 +14,12 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import ru.krirll.testtask.MainApplication
-import ru.krirll.testtask.R
 import ru.krirll.testtask.databinding.FragmentCarouselBestSellersBinding
 import ru.krirll.testtask.presentation.listAdapters.BestSellerAdapter
 import ru.krirll.testtask.presentation.listAdapters.ImagesAdapter
+import ru.krirll.testtask.presentation.viewModels.uiState.BooksUiState
 import ru.krirll.testtask.presentation.viewModels.CarouselBestSellerViewModel
+import ru.krirll.testtask.presentation.viewModels.uiState.CarouselUiState
 import ru.krirll.testtask.presentation.viewModels.ViewModelFactory
 import javax.inject.Inject
 
@@ -72,26 +73,48 @@ class CarouselBestSellersFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        carouselBestSellerViewModel.carousel.observe(viewLifecycleOwner) {
-            carouselAdapter?.submitList(it)
-        }
-        carouselBestSellerViewModel.bestSellerBooks.observe(viewLifecycleOwner) {
-            bestSellerAdapter?.submitList(it)
-        }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                carouselBestSellerViewModel.networkErrors.collect {
-                    view?.let {
-                        Snackbar.make(
-                            it,
-                            getString(R.string.network_error),
-                            Snackbar.LENGTH_LONG
-                        ).apply {
-                            animationMode = Snackbar.ANIMATION_MODE_SLIDE
-                        }.show()
+                carouselBestSellerViewModel.carousel.collect {
+                    when (it) {
+                        is CarouselUiState.Success -> {
+                            carouselAdapter?.submitList(it.carousel)
+                        }
+                        is CarouselUiState.Error -> {
+                            showShackBar(it.message)
+                        }
+                        is CarouselUiState.Empty -> Unit
                     }
                 }
             }
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                carouselBestSellerViewModel.books.collect {
+                    when (it) {
+                        is BooksUiState.Success -> {
+                            bestSellerAdapter?.submitList(it.books)
+                        }
+                        is BooksUiState.Error -> {
+                            showShackBar(it.message)
+                        }
+                        is BooksUiState.Empty -> Unit
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showShackBar(message: String) {
+        view?.let { view ->
+            Snackbar.make(
+                view,
+                message,
+                Snackbar.LENGTH_LONG
+            ).apply {
+                animationMode = Snackbar.ANIMATION_MODE_SLIDE
+            }.show()
         }
     }
 

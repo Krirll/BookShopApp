@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestTask</string>
+    <string name="app_name">BookShop</string>
     <string name="logo">logo</string>
     <string name="best_seller">Best Seller</string>
     <string name="best_seller_image">best seller image</string>

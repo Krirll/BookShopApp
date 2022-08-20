@@ -19,6 +19,7 @@ import ru.krirll.testtask.MainApplication
 import ru.krirll.testtask.R
 import ru.krirll.testtask.databinding.FragmentBookDetailsBinding
 import ru.krirll.testtask.presentation.listAdapters.ImagesAdapter
+import ru.krirll.testtask.presentation.viewModels.uiState.BookDetailsUiState
 import ru.krirll.testtask.presentation.viewModels.BookDetailsViewModel
 import ru.krirll.testtask.presentation.viewModels.ViewModelFactory
 import javax.inject.Inject
@@ -69,23 +70,32 @@ class BookDetailsFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        bookDetailsViewModel.similarBooks.observe(viewLifecycleOwner) {
-            similarAdapter?.submitList(it)
-        }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                bookDetailsViewModel.networkErrors.collect {
-                    view?.let {
-                        Snackbar.make(
-                            it,
-                            getString(R.string.network_error),
-                            Snackbar.LENGTH_LONG
-                        ).apply {
-                            animationMode = Snackbar.ANIMATION_MODE_SLIDE
-                        }.show()
+                bookDetailsViewModel.similarBooks.collect {
+                    when (it) {
+                        is BookDetailsUiState.Success -> {
+                            similarAdapter?.submitList(it.books)
+                        }
+                        is BookDetailsUiState.Error -> {
+                            showSnackBar(it.message)
+                        }
+                        is BookDetailsUiState.Empty -> Unit
                     }
                 }
             }
+        }
+    }
+
+    private fun showSnackBar(message: String) {
+        view?.let {
+            Snackbar.make(
+                it,
+                message,
+                Snackbar.LENGTH_LONG
+            ).apply {
+                animationMode = Snackbar.ANIMATION_MODE_SLIDE
+            }.show()
         }
     }
 
