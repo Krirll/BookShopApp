@@ -7,10 +7,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import ru.krirll.testtask.domain.useCases.GetSimilarBooksUseCase
 import ru.krirll.testtask.presentation.viewModels.uiState.BookDetailsUiState
-import javax.inject.Inject
 
-class BookDetailsViewModel @Inject constructor(
-    private val getSimilarBooksUseCase: GetSimilarBooksUseCase /*= GetSimilarBooksUseCase(repository)*/
+class BookDetailsViewModel (
+    private val getSimilarBooksUseCase: GetSimilarBooksUseCase
 ): ViewModel() {
 
     private var _similarBooks = MutableStateFlow<BookDetailsUiState>(BookDetailsUiState.Empty)
