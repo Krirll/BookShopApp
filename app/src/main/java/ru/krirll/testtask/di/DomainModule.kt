@@ -1,9 +1,9 @@
 package ru.krirll.testtask.di
 
 import org.koin.dsl.module
-import ru.krirll.testtask.domain.useCases.GetBestSellerBooksUseCase
-import ru.krirll.testtask.domain.useCases.GetCarouselImagesUseCase
-import ru.krirll.testtask.domain.useCases.GetSimilarBooksUseCase
+import ru.krirll.domain.useCases.GetBestSellerBooksUseCase
+import ru.krirll.domain.useCases.GetCarouselImagesUseCase
+import ru.krirll.domain.useCases.GetSimilarBooksUseCase
 
 val domainModule = module {
 

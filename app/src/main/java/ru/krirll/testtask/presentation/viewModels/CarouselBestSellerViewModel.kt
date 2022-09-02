@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import ru.krirll.testtask.domain.useCases.GetBestSellerBooksUseCase
-import ru.krirll.testtask.domain.useCases.GetCarouselImagesUseCase
+import ru.krirll.domain.useCases.GetBestSellerBooksUseCase
+import ru.krirll.domain.useCases.GetCarouselImagesUseCase
 import ru.krirll.testtask.presentation.viewModels.uiState.BooksUiState
 import ru.krirll.testtask.presentation.viewModels.uiState.CarouselUiState
 

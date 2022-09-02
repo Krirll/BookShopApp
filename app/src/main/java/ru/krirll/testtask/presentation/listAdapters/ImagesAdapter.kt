@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import ru.krirll.testtask.databinding.CarouselItemBinding
 import ru.krirll.testtask.databinding.SimilarItemBinding
-import ru.krirll.testtask.domain.entities.ImageItem
+import ru.krirll.domain.entities.ImageItem
 
 class ImagesAdapter : ListAdapter<ImageItem, ImageItemViewHolder>(ImageItemDiffCallBack()) {
 

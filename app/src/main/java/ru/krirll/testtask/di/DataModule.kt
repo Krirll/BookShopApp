@@ -1,11 +1,11 @@
 package ru.krirll.testtask.di
 
 import org.koin.dsl.module
-import ru.krirll.testtask.data.mappers.BookMapper
-import ru.krirll.testtask.data.mappers.ImageMapper
-import ru.krirll.testtask.data.network.ApiService
-import ru.krirll.testtask.data.repository.RepositoryImpl
-import ru.krirll.testtask.domain.repository.Repository
+import ru.krirll.data.mappers.BookMapper
+import ru.krirll.data.mappers.ImageMapper
+import ru.krirll.data.network.ApiService
+import ru.krirll.data.repository.RepositoryImpl
+import ru.krirll.domain.repository.Repository
 
 val dataModule = module {
 

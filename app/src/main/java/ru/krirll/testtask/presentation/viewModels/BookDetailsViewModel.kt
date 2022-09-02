@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import ru.krirll.testtask.domain.useCases.GetSimilarBooksUseCase
+import ru.krirll.domain.useCases.GetSimilarBooksUseCase
 import ru.krirll.testtask.presentation.viewModels.uiState.BookDetailsUiState
 
 class BookDetailsViewModel (

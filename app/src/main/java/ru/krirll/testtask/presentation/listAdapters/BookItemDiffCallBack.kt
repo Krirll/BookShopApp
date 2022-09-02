@@ -1,7 +1,7 @@
 package ru.krirll.testtask.presentation.listAdapters
 
 import androidx.recyclerview.widget.DiffUtil
-import ru.krirll.testtask.domain.entities.BookItem
+import ru.krirll.domain.entities.BookItem
 
 class BookItemDiffCallBack: DiffUtil.ItemCallback<BookItem>() {
 
