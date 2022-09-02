@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import ru.krirll.testtask.R
 import ru.krirll.testtask.databinding.BestSellerItemBinding
-import ru.krirll.testtask.domain.entities.BookItem
+import ru.krirll.domain.entities.BookItem
 
 class BestSellerAdapter : ListAdapter<BookItem, BookItemViewHolder>(BookItemDiffCallBack()) {
 

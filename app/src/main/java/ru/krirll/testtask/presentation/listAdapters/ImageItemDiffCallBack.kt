@@ -1,7 +1,7 @@
 package ru.krirll.testtask.presentation.listAdapters
 
 import androidx.recyclerview.widget.DiffUtil
-import ru.krirll.testtask.domain.entities.ImageItem
+import ru.krirll.domain.entities.ImageItem
 
 class ImageItemDiffCallBack: DiffUtil.ItemCallback<ImageItem>() {
 
