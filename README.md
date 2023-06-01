@@ -8,5 +8,9 @@
 ![Dagger](https://img.shields.io/badge/-Dagger2-6F5CD6?style=for-the-badge&logo=)\
 ![Koin](https://img.shields.io/badge/-Koin-6F5CD6?style=for-the-badge&logo=)
 
+## [Реализация с Dagger](https://github.com/Krirll/BookShopApp/tree/migrate-from-livedata-to-flow)
+## [Реализация с Koin](https://github.com/Krirll/BookShopApp/tree/migrate-from-dagger-to-koin)
+## [Миграция с LiveData на Flow](https://github.com/Krirll/BookShopApp/commit/e5b80c1e5f8143fd26677cbcd53a42ec97a97c5d)
+
 # Результат
-<image src="https://github.com/Krirll/CinemaApp/blob/master/readme-video/video.gif" width="300"/>
+<img src="https://github.com/Krirll/BookShopApp/blob/master/readme-video/video.gif"/>
