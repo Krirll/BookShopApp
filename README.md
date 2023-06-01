@@ -9,4 +9,4 @@
 ![Koin](https://img.shields.io/badge/-Koin-6F5CD6?style=for-the-badge&logo=)
 
 # Результат
-<video src="https://github.com/Krirll/CinemaApp/blob/master/readme-video/video_2023-06-01_21-33-42.mp4" width="300"></video>
+<image src="https://github.com/Krirll/CinemaApp/blob/master/readme-video/video.gif" width="300"/>
