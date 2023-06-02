@@ -1,4 +1,5 @@
 # Стек
+![Clean Architecture](https://img.shields.io/badge/-Clean_Architecture-5A8AD6?style=for-the-badge&logo=)\
 ![MVI](https://img.shields.io/badge/-MVI-5A8AD6?style=for-the-badge&logo=)\
 ![MVVM](https://img.shields.io/badge/-MVVM-5A8AD6?style=for-the-badge&logo=)\
 ![Kotlin](https://img.shields.io/badge/-Kotlin-orange?style=for-the-badge&logo=Kotlin)\
